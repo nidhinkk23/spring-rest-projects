@@ -10,5 +10,6 @@ public class EmployeeResponse {
 	private int statusCode;
 	private String message;
 	private String description;
+	private List<EmployeePrimaryInfo> list;
 	
 }

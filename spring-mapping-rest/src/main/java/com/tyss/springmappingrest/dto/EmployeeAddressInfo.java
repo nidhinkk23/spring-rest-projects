@@ -21,8 +21,10 @@ public class EmployeeAddressInfo {
 	@Id
 	@Column
 	@GeneratedValue
-	private int id;
+	private int addressId;
 	
+	@Column
+	private String address_type;
 	@Column
 	private int house_no;
 	@Column

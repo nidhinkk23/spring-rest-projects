@@ -1,5 +1,6 @@
 package com.tyss.springmappingrest.dto;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -22,7 +23,7 @@ import lombok.EqualsAndHashCode.Exclude;
 @Data
 @Entity
 @Table(name = "employee_primary_info")
-public class EmployeePrimaryInfo {
+public class EmployeePrimaryInfo implements Serializable {
 	@Id
 	@GeneratedValue
 	@Column
@@ -33,12 +34,17 @@ public class EmployeePrimaryInfo {
 	private double salary;
 	@Column
 	private int experiance;
+
 	
-	@OneToOne(cascade = CascadeType.ALL,mappedBy = "primary")
-	private EmployeeSecondaryInfo secondaryInfo;
+	@OneToOne(cascade = CascadeType.ALL)
+	private EmployeeSecondaryInfo secondary;
+ 
 	
-	@OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-	@JoinColumn(name = "empid")
+	
+//	@OneToOne(cascade = CascadeType.ALL,mappedBy = "primary")
+//	private EmployeeSecondaryInfo secondaryInfo;
+	
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<EmployeeAddressInfo> addressInfos;
 	
 	

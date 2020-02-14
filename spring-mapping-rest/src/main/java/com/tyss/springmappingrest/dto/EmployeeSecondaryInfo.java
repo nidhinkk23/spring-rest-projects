@@ -1,5 +1,7 @@
 package com.tyss.springmappingrest.dto;
 
+import java.io.Serializable;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,20 +18,22 @@ import lombok.EqualsAndHashCode.Exclude;
 @Data
 @Entity
 @Table(name = "employee_secondary_info")
-public class EmployeeSecondaryInfo {
+public class EmployeeSecondaryInfo implements Serializable {
 	@Id
-	
-	private int empid;
+	@GeneratedValue
+	private int detailsId;
 	@Column
 	private String gender;
 	@Column
 	private String personal_email;
 	@Column
 	private String job_location;
-	@Exclude
-	@MapsId
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name="empid")
-	private EmployeePrimaryInfo primary;
+	
+	
+//	@Exclude
+//	@MapsId
+//	@OneToOne(cascade = CascadeType.ALL)
+//	@JoinColumn(name="empid")
+//	private EmployeePrimaryInfo primary;
 
 }
